@@ -13,6 +13,7 @@ import javax.swing.event.ChangeListener;
  */
 public class Maincontroller extends javax.swing.JFrame {
     private DefenceObservable defenceObservable;
+    String typeMessage;
     /**
      * Creates new form Maincontroller
      */
@@ -41,17 +42,18 @@ public class Maincontroller extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         operationJSlider = new javax.swing.JSlider();
-        jTextField2 = new javax.swing.JTextField();
+        sendJTextField = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        sendAllBtn = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main Controller");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Collection Information");
@@ -81,7 +83,12 @@ public class Maincontroller extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("jTextField2");
+        sendJTextField.setText("Type Message...");
+        sendJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendJTextFieldActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setText("Helicopter");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +118,12 @@ public class Maincontroller extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Send All");
+        sendAllBtn.setText("Send All");
+        sendAllBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendAllBtnActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jToggleButton2.setText("Area Not Cleared");
@@ -136,7 +148,7 @@ public class Maincontroller extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addComponent(operationJSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -147,7 +159,7 @@ public class Maincontroller extends javax.swing.JFrame {
                                         .addComponent(jRadioButton3)
                                         .addGap(7, 7, 7)
                                         .addComponent(jButton1))
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(sendAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))))
                 .addContainerGap())
@@ -176,8 +188,8 @@ public class Maincontroller extends javax.swing.JFrame {
                             .addComponent(jRadioButton2)
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sendAllBtn))
+                    .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -212,6 +224,20 @@ public class Maincontroller extends javax.swing.JFrame {
         }
         });
     }//GEN-LAST:event_operationJSliderStateChanged
+
+    private void sendJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendJTextFieldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_sendJTextFieldActionPerformed
+
+    private void sendAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendAllBtnActionPerformed
+        // TODO add your handling code here:
+        typeMessage =sendJTextField.getText();
+        defenceObservable.sendMessageFromMain(typeMessage);
+        
+        sendJTextField.setText("");
+        
+    }//GEN-LAST:event_sendAllBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,7 +276,6 @@ public class Maincontroller extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -259,8 +284,9 @@ public class Maincontroller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JSlider operationJSlider;
+    private javax.swing.JButton sendAllBtn;
+    private javax.swing.JTextField sendJTextField;
     // End of variables declaration//GEN-END:variables
 }

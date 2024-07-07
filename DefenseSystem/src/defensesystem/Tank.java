@@ -37,6 +37,11 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         rotateShootingBtn.setEnabled(false);
         }
     }
+    public void mainMessageJTextArea(String typeMessage){
+        mainMessageJTextArea.append(typeMessage+"\n");
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +59,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         missileOperationBtn = new javax.swing.JButton();
         rotateShootingBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        mainMessageJTextArea = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +71,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         jButton6.setText("jButton6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tank");
         setResizable(false);
 
         jSlider1.setMajorTickSpacing(10);
@@ -110,9 +116,9 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        mainMessageJTextArea.setColumns(20);
+        mainMessageJTextArea.setRows(5);
+        jScrollPane1.setViewportView(mainMessageJTextArea);
 
         jTextField1.setText("Type Message...");
 
@@ -196,9 +202,9 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -273,8 +279,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JButton missileOperationBtn;
     private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton redarOperationbtn;

@@ -11,6 +11,8 @@ package defensesystem;
 public class Helicopter extends javax.swing.JFrame implements SuperDefence{
      boolean position;
      int operation;
+     int task;
+     
     /**
      * Creates new form Helicopter
      */
@@ -35,6 +37,11 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         laserOperationbtn.setEnabled(false);
         }
     };
+    
+    public void mainMessageJTextArea(String typeMessage){
+        mainMessageJTextArea.append("Task "+(++task)+": "+typeMessage+"\n");
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,9 +65,10 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        mainMessageJTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Helicopter");
 
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
@@ -116,9 +124,18 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        mainMessageJTextArea.setColumns(20);
+        mainMessageJTextArea.setRows(5);
+        mainMessageJTextArea.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                mainMessageJTextAreaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(mainMessageJTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,6 +244,10 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         this.update(operation);
     }//GEN-LAST:event_positionBtnActionPerformed
 
+    private void mainMessageJTextAreaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_mainMessageJTextAreaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mainMessageJTextAreaAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -271,9 +292,9 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton laserOperationbtn;
+    private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JButton missileOperationBtn;
     private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton shootBtn;

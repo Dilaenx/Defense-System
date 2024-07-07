@@ -30,10 +30,16 @@ public class DefenceObservable {
     public void notifyObject(){
         for(SuperDefence ob : defenceList){
             ob.update(operation);
-            System.out.println(operation);
+            
         }
     }
+    
+   public void sendMessageFromMain(String typeMessage){
+        for(SuperDefence ob : defenceList){
+          ob.mainMessageJTextArea(typeMessage);
             
+        }
+   }
   
     
 }
