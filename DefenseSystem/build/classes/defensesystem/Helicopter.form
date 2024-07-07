@@ -32,7 +32,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jTextField2" min="-2" pref="316" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -42,7 +41,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="laserOperationbtn" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
                                   <Component id="missileOperationBtn" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
-                                  <Component id="shootJbn" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="shootBtn" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -66,6 +65,7 @@
                                   </Group>
                               </Group>
                           </Group>
+                          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -82,7 +82,7 @@
               <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="shootJbn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shootBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -103,8 +103,8 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="167" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="173" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,13 +139,13 @@
         <Property name="text" type="java.lang.String" value="Area Not Cleared"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="shootJbn">
+    <Component class="javax.swing.JButton" name="shootBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Shoot"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="shootJbnStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shootJbnActionPerformed"/>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="shootBtnStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shootBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="missileOperationBtn">
@@ -163,11 +163,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="laserOperationbtnActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Properties>
@@ -198,5 +193,20 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner2">
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
