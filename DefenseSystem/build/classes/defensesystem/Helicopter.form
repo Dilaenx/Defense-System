@@ -61,7 +61,7 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jToggleButton1" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="positionBtn" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -99,7 +99,7 @@
                           <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jToggleButton1" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="positionBtn" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -184,10 +184,13 @@
         <Property name="text" type="java.lang.String" value="Ammo Count"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="positionBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Position"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="positionBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
     </Component>

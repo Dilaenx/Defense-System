@@ -9,7 +9,8 @@ package defensesystem;
  * @author dilae
  */
 public class Helicopter extends javax.swing.JFrame implements SuperDefence{
-
+     boolean position;
+     int operation;
     /**
      * Creates new form Helicopter
      */
@@ -23,9 +24,16 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         laserOperationbtn.setEnabled(false);
     }
     public void update(int operation){
+        this.operation=operation;
+        if(position){
         if(operation>25){shootBtn.setEnabled(true);}else{shootBtn.setEnabled(false);}
         if(operation>50){missileOperationBtn.setEnabled(true);}else{missileOperationBtn.setEnabled(false);}
         if(operation>75){laserOperationbtn.setEnabled(true);}else{laserOperationbtn.setEnabled(false);}
+        }else{
+        shootBtn.setEnabled(false);
+        missileOperationBtn.setEnabled(false);
+        laserOperationbtn.setEnabled(false);
+        }
     };
 
     /**
@@ -46,7 +54,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        positionBtn = new javax.swing.JToggleButton();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -101,7 +109,12 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
 
         jLabel3.setText("Ammo Count");
 
-        jToggleButton1.setText("Position");
+        positionBtn.setText("Position");
+        positionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionBtnActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -142,7 +155,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
                                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(18, 18, 18)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +182,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
                             .addComponent(jLabel3)
                             .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,6 +220,12 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         // TODO add your handling code here:
         
     }//GEN-LAST:event_shootBtnStateChanged
+
+    private void positionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionBtnActionPerformed
+        // TODO add your handling code here:
+        position=positionBtn.getModel().isSelected();
+        this.update(operation);
+    }//GEN-LAST:event_positionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,9 +273,9 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton laserOperationbtn;
     private javax.swing.JButton missileOperationBtn;
+    private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton shootBtn;
     // End of variables declaration//GEN-END:variables
 }

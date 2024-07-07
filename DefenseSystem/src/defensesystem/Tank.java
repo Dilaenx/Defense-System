@@ -9,7 +9,8 @@ package defensesystem;
  * @author dilae
  */
 public class Tank extends javax.swing.JFrame implements SuperDefence{
-
+    boolean position;
+    int operation;
     /**
      * Creates new form Tank
      */
@@ -23,10 +24,18 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         
     }
     public void update(int operation){
+        this.operation=operation;
+        if(position){
         if(operation>15){ShootBtn.setEnabled(true);}else{ShootBtn.setEnabled(false);}
         if(operation>20){missileOperationBtn.setEnabled(true);}else{missileOperationBtn.setEnabled(false);}
         if(operation>50){redarOperationbtn.setEnabled(true);}else{redarOperationbtn.setEnabled(false);}
         if(operation>75){rotateShootingBtn.setEnabled(true);}else{rotateShootingBtn.setEnabled(false);}
+        }else{
+        ShootBtn.setEnabled(false);
+        missileOperationBtn.setEnabled(false);
+        redarOperationbtn.setEnabled(false);
+        rotateShootingBtn.setEnabled(false);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +59,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        positionBtn = new javax.swing.JToggleButton();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
 
@@ -113,7 +122,12 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
         jLabel3.setText("Soldier Count");
 
-        jToggleButton1.setText("Position");
+        positionBtn.setText("Position");
+        positionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,7 +159,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(positionBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +192,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                                     .addComponent(jLabel3)
                                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -206,6 +220,12 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private void rotateShootingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotateShootingBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rotateShootingBtnActionPerformed
+
+    private void positionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionBtnActionPerformed
+        // TODO add your handling code here:
+        position=positionBtn.getModel().isSelected();
+        this.update(operation);
+    }//GEN-LAST:event_positionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,8 +275,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton missileOperationBtn;
+    private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton redarOperationbtn;
     private javax.swing.JButton rotateShootingBtn;
     // End of variables declaration//GEN-END:variables

@@ -9,7 +9,8 @@ package defensesystem;
  * @author dilae
  */
 public class SubMarine extends javax.swing.JFrame implements SuperDefence{
-
+    boolean position;
+    int operation;
     /**
      * Creates new form SubMarine
      */
@@ -22,10 +23,18 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         trident2MissileBtn.setEnabled(false);
     }
     public void update(int operation){
+        this.operation=operation;
+        if(position){
         if(operation>15){shootBtn.setEnabled(true);}else{shootBtn.setEnabled(false);}
         if(operation>20){sonarOperationBtn.setEnabled(true);}else{sonarOperationBtn.setEnabled(false);}
         if(operation>50){tomahawkMissileBtn.setEnabled(true);}else{tomahawkMissileBtn.setEnabled(false);}
         if(operation>75){trident2MissileBtn.setEnabled(true);}else{trident2MissileBtn.setEnabled(false);}
+        }else{
+        shootBtn.setEnabled(false);
+        sonarOperationBtn.setEnabled(false);
+        tomahawkMissileBtn.setEnabled(false);
+        trident2MissileBtn.setEnabled(false);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +55,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        positionBtn = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
         shootBtn = new javax.swing.JButton();
         trident2MissileBtn = new javax.swing.JButton();
@@ -76,7 +85,12 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
 
         jButton5.setText("Send");
 
-        jToggleButton1.setText("Position");
+        positionBtn.setText("Position");
+        positionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionBtnActionPerformed(evt);
+            }
+        });
 
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMinorTickSpacing(5);
@@ -131,7 +145,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                                     .addComponent(sonarOperationBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,7 +201,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                                     .addComponent(jLabel3)
                                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)))
@@ -202,6 +216,12 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void positionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionBtnActionPerformed
+        // TODO add your handling code here:
+        position=positionBtn.getModel().isSelected();
+        this.update(operation);
+    }//GEN-LAST:event_positionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,7 +272,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton shootBtn;
     private javax.swing.JButton sonarOperationBtn;
     private javax.swing.JButton tomahawkMissileBtn;
