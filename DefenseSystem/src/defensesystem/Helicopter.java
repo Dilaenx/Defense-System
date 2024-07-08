@@ -49,6 +49,10 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.append("task "+(++task)+":- "+typeMessage+"\n");
         
     }
+    
+    public void newAreaStatus(String newAreaStatus){
+        areaStatusJLebel.setText(newAreaStatus);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +64,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     private void initComponents() {
 
         jSlider1 = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
+        areaStatusJLebel = new javax.swing.JLabel();
         shootBtn = new javax.swing.JButton();
         missileOperationBtn = new javax.swing.JButton();
         laserOperationbtn = new javax.swing.JButton();
@@ -87,8 +91,8 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Area Not Cleared");
+        areaStatusJLebel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        areaStatusJLebel.setText("Area Not Cleared");
 
         shootBtn.setText("Shoot");
         shootBtn.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -115,8 +119,6 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
                 laserOperationbtnActionPerformed(evt);
             }
         });
-
-        sendMessagetomain.setText("jTextField2");
 
         mainSendBtn.setText("Send");
         mainSendBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +159,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(areaStatusJLebel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +196,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(areaStatusJLebel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(shootBtn)
@@ -253,7 +255,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     private void positionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionBtnActionPerformed
         // TODO add your handling code here:
         position=positionBtn.getModel().isSelected();
-        this.update(operation);
+        update(operation);
     }//GEN-LAST:event_positionBtnActionPerformed
 
     private void mainMessageJTextAreaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_mainMessageJTextAreaAncestorAdded
@@ -262,7 +264,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
 
     private void mainSendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainSendBtnActionPerformed
         // TODO add your handling code here:
-       String Message ="Helicopter :"+sendMessagetomain.getText();
+       String Message ="Helicopter  :"+sendMessagetomain.getText();
        maincontroller.sendMsgToMain(Message);
       sendMessagetomain.setText("");
        
@@ -305,7 +307,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel areaStatusJLebel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;

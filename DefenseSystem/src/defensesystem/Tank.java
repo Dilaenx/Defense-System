@@ -30,6 +30,11 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     
     }
     
+    public void newAreaStatus(String newAreaStatus){
+        areaStatusJLebel.setText(newAreaStatus);
+    }
+
+    
     public void update(int operation){
         this.operation=operation;
         if(position){
@@ -60,7 +65,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
         jButton6 = new javax.swing.JButton();
         jSlider1 = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
+        areaStatusJLebel = new javax.swing.JLabel();
         ShootBtn = new javax.swing.JButton();
         redarOperationbtn = new javax.swing.JButton();
         missileOperationBtn = new javax.swing.JButton();
@@ -88,8 +93,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel1.setText("Area Not Cleared");
+        areaStatusJLebel.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        areaStatusJLebel.setText("Area Not Cleared");
 
         ShootBtn.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         ShootBtn.setText("Shoot");
@@ -159,7 +164,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(areaStatusJLebel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(sendMessagetomain)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,7 +200,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(areaStatusJLebel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -252,7 +257,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
     private void sendMessagetomainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagetomainBtnActionPerformed
         // TODO add your handling code here:
-        String Message ="War Tank :"+sendMessagetomain.getText();
+        String Message ="War Tank  :"+sendMessagetomain.getText();
        maincontroller.sendMsgToMain(Message);
       sendMessagetomain.setText("");
        
@@ -299,8 +304,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ShootBtn;
+    private javax.swing.JLabel areaStatusJLebel;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;

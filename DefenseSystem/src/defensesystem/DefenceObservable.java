@@ -48,6 +48,14 @@ public class DefenceObservable {
    public void sendMsgToMain(String message){
        System.out.println("");
    }
+   
+   public void areaStatus(boolean areaStatus){
+   String newAreaStatus=(areaStatus)?"Area Not Cleared":"Area Cleard";
+       for(SuperDefence ob: defenceList){
+       ob.newAreaStatus(newAreaStatus);
+       }
+   
+   }
   
     
 }

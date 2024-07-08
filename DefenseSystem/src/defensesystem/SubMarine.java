@@ -48,6 +48,10 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.append("task "+(++task)+":- "+typeMessage+"\n");
         
     }
+    public void newAreaStatus(String newAreaStatus){
+        areaStatusJLebel.setText(newAreaStatus);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +62,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        areaStatusJLebel = new javax.swing.JLabel();
         sonarOperationBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -81,8 +85,8 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         setTitle("SubMarine");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel1.setText("Area not Cleared");
+        areaStatusJLebel.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        areaStatusJLebel.setText("Area not Cleared");
 
         sonarOperationBtn.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         sonarOperationBtn.setText("Sonar Operation");
@@ -94,8 +98,6 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.setColumns(20);
         mainMessageJTextArea.setRows(5);
         jScrollPane1.setViewportView(mainMessageJTextArea);
-
-        sendMessagetomain.setText("Type Message...");
 
         sendMessagetomainBtn.setText("Send");
         sendMessagetomainBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +150,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel1)
+                        .addComponent(areaStatusJLebel)
                         .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -199,7 +201,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                     .addComponent(jSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(areaStatusJLebel)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -286,7 +288,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel areaStatusJLebel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

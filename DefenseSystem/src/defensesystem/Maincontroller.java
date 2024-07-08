@@ -53,7 +53,7 @@ public class Maincontroller extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         sendAllBtn = new javax.swing.JButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        areaNotClearedBtn = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         msgJTextArea = new javax.swing.JTextArea();
 
@@ -130,8 +130,13 @@ public class Maincontroller extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jToggleButton2.setText("Area Not Cleared");
+        areaNotClearedBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        areaNotClearedBtn.setText("Area Not Cleared");
+        areaNotClearedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaNotClearedBtnActionPerformed(evt);
+            }
+        });
 
         msgJTextArea.setColumns(20);
         msgJTextArea.setRows(5);
@@ -170,7 +175,7 @@ public class Maincontroller extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(areaNotClearedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(268, 268, 268))
         );
         layout.setVerticalGroup(
@@ -196,7 +201,7 @@ public class Maincontroller extends javax.swing.JFrame {
                         .addComponent(sendAllBtn))
                     .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(areaNotClearedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -244,6 +249,12 @@ public class Maincontroller extends javax.swing.JFrame {
         
     }//GEN-LAST:event_sendAllBtnActionPerformed
 
+    private void areaNotClearedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaNotClearedBtnActionPerformed
+        // TODO add your handling code here:
+        boolean areaStatus =areaNotClearedBtn.getModel().isSelected();
+        defenceObservable.areaStatus(areaStatus);
+    }//GEN-LAST:event_areaNotClearedBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,6 +291,7 @@ public class Maincontroller extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton areaNotClearedBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButton1;
@@ -288,7 +300,6 @@ public class Maincontroller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextArea msgJTextArea;
     private javax.swing.JSlider operationJSlider;
     private javax.swing.JButton sendAllBtn;

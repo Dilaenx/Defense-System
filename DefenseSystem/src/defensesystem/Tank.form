@@ -35,7 +35,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                  <Component id="areaStatusJLebel" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="sendMessagetomain" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSlider1" min="-2" pref="326" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="areaStatusJLebel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -134,7 +134,7 @@
         <Property name="snapToTicks" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="areaStatusJLebel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Black" size="14" style="1"/>

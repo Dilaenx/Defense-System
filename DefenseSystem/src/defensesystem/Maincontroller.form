@@ -61,7 +61,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jToggleButton2" min="-2" pref="168" max="-2" attributes="0"/>
+              <Component id="areaNotClearedBtn" min="-2" pref="168" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -92,7 +92,7 @@
                   <Component id="sendJTextField" min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jToggleButton2" min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="areaNotClearedBtn" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -221,13 +221,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendAllBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+    <Component class="javax.swing.JToggleButton" name="areaNotClearedBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Area Not Cleared"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areaNotClearedBtnActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
