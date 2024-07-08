@@ -56,6 +56,27 @@ public class DefenceObservable {
        }
    
    }
+   
+   public void sendMessageFromMain(String typeMessage,Helicopter helicopter){
+       for(SuperDefence ob : defenceList){
+          if(ob instanceof Helicopter)ob.mainMessageJTextArea(typeMessage);
+            
+        }
+   }
+   
+   public void sendMessageFromMain(String typeMessage,Tank helicopter){
+       for(SuperDefence ob : defenceList){
+          if(ob instanceof Tank)ob.mainMessageJTextArea(typeMessage);
+            
+        }
+   }
+   
+   public void sendMessageFromMain(String typeMessage,SubMarine helicopter){
+       for(SuperDefence ob : defenceList){
+          if(ob instanceof SubMarine)ob.mainMessageJTextArea(typeMessage);
+            
+        }
+   }
   
     
 }

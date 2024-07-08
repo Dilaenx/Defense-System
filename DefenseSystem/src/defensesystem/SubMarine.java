@@ -65,15 +65,15 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         areaStatusJLebel = new javax.swing.JLabel();
         sonarOperationBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        soldierCount = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        ammoCount = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainMessageJTextArea = new javax.swing.JTextArea();
         sendMessagetomain = new javax.swing.JTextField();
         sendMessagetomainBtn = new javax.swing.JButton();
         positionBtn = new javax.swing.JToggleButton();
-        jSlider1 = new javax.swing.JSlider();
+        fuelCounter = new javax.swing.JSlider();
         shootBtn = new javax.swing.JButton();
         trident2MissileBtn = new javax.swing.JButton();
         tomahawkMissileBtn = new javax.swing.JButton();
@@ -93,7 +93,19 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
 
         jLabel2.setText("Soldier Count");
 
-        jLabel3.setText("Soldier Count");
+        soldierCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                soldierCountStateChanged(evt);
+            }
+        });
+
+        jLabel3.setText("Ammo Count");
+
+        ammoCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ammoCountStateChanged(evt);
+            }
+        });
 
         mainMessageJTextArea.setColumns(20);
         mainMessageJTextArea.setRows(5);
@@ -113,12 +125,17 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
             }
         });
 
-        jSlider1.setMajorTickSpacing(10);
-        jSlider1.setMinorTickSpacing(5);
-        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
+        fuelCounter.setMajorTickSpacing(10);
+        fuelCounter.setMinorTickSpacing(5);
+        fuelCounter.setOrientation(javax.swing.JSlider.VERTICAL);
+        fuelCounter.setPaintLabels(true);
+        fuelCounter.setPaintTicks(true);
+        fuelCounter.setSnapToTicks(true);
+        fuelCounter.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                fuelCounterStateChanged(evt);
+            }
+        });
 
         shootBtn.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         shootBtn.setText("Shoot");
@@ -170,18 +187,18 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(soldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(ammoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(sendMessagetomain, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(sendMessagetomainBtn)))
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fuelCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -199,7 +216,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fuelCounter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(areaStatusJLebel)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,11 +232,11 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(soldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ammoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12)
@@ -251,6 +268,24 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
        
      
     }//GEN-LAST:event_sendMessagetomainBtnActionPerformed
+
+    private void soldierCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_soldierCountStateChanged
+        // TODO add your handling code here:
+        int soldierCountValue =(int) soldierCount.getValue();
+        maincontroller.setValueAt(soldierCountValue, 2, 1);
+    }//GEN-LAST:event_soldierCountStateChanged
+
+    private void fuelCounterStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fuelCounterStateChanged
+        // TODO add your handling code here:
+        int fuelvalue =fuelCounter.getValue();
+        maincontroller.setValueAt(fuelvalue, 2, 2);
+    }//GEN-LAST:event_fuelCounterStateChanged
+
+    private void ammoCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ammoCountStateChanged
+        // TODO add your handling code here:
+        int ammoCountValue =(int) ammoCount.getValue();
+        maincontroller.setValueAt(ammoCountValue, 2, 3);
+    }//GEN-LAST:event_ammoCountStateChanged
 
     /**
      * @param args the command line arguments
@@ -288,21 +323,21 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner ammoCount;
     private javax.swing.JLabel areaStatusJLebel;
+    private javax.swing.JSlider fuelCounter;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JToggleButton positionBtn;
     private javax.swing.JTextField sendMessagetomain;
     private javax.swing.JButton sendMessagetomainBtn;
     private javax.swing.JButton shootBtn;
+    private javax.swing.JSpinner soldierCount;
     private javax.swing.JButton sonarOperationBtn;
     private javax.swing.JButton tomahawkMissileBtn;
     private javax.swing.JButton trident2MissileBtn;

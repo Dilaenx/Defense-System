@@ -64,7 +64,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private void initComponents() {
 
         jButton6 = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
+        fuelCounter = new javax.swing.JSlider();
         areaStatusJLebel = new javax.swing.JLabel();
         ShootBtn = new javax.swing.JButton();
         redarOperationbtn = new javax.swing.JButton();
@@ -77,8 +77,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         positionBtn = new javax.swing.JToggleButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        soldierCount = new javax.swing.JSpinner();
+        ammoCount = new javax.swing.JSpinner();
 
         jButton6.setText("jButton6");
 
@@ -86,12 +86,17 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         setTitle("Tank");
         setResizable(false);
 
-        jSlider1.setMajorTickSpacing(10);
-        jSlider1.setMinorTickSpacing(5);
-        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
+        fuelCounter.setMajorTickSpacing(10);
+        fuelCounter.setMinorTickSpacing(5);
+        fuelCounter.setOrientation(javax.swing.JSlider.VERTICAL);
+        fuelCounter.setPaintLabels(true);
+        fuelCounter.setPaintTicks(true);
+        fuelCounter.setSnapToTicks(true);
+        fuelCounter.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                fuelCounterStateChanged(evt);
+            }
+        });
 
         areaStatusJLebel.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         areaStatusJLebel.setText("Area Not Cleared");
@@ -132,7 +137,6 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.setRows(5);
         jScrollPane1.setViewportView(mainMessageJTextArea);
 
-        sendMessagetomain.setText("Type Message...");
         sendMessagetomain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendMessagetomainActionPerformed(evt);
@@ -148,12 +152,24 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
         jLabel2.setText("Soldier Count");
 
-        jLabel3.setText("Soldier Count");
+        jLabel3.setText("Ammo Count");
 
         positionBtn.setText("Position");
         positionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 positionBtnActionPerformed(evt);
+            }
+        });
+
+        soldierCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                soldierCountStateChanged(evt);
+            }
+        });
+
+        ammoCount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ammoCountStateChanged(evt);
             }
         });
 
@@ -172,7 +188,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ShootBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(redarOperationbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                            .addComponent(redarOperationbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(missileOperationBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -182,23 +198,23 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ammoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(soldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(positionBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(fuelCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fuelCounter, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(areaStatusJLebel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -214,11 +230,11 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(soldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ammoCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(positionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -227,7 +243,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(sendMessagetomainBtn)
                             .addComponent(sendMessagetomain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,6 +283,24 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         // TODO add your handling code here:
     }//GEN-LAST:event_sendMessagetomainActionPerformed
 
+    private void soldierCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_soldierCountStateChanged
+        // TODO add your handling code here:
+        int soldierCountValue =(int) soldierCount.getValue();
+        maincontroller.setValueAt(soldierCountValue, 1, 1);
+    }//GEN-LAST:event_soldierCountStateChanged
+
+    private void fuelCounterStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fuelCounterStateChanged
+        // TODO add your handling code here:
+        int fuelvalue =fuelCounter.getValue();
+        maincontroller.setValueAt(fuelvalue, 1, 2);
+    }//GEN-LAST:event_fuelCounterStateChanged
+
+    private void ammoCountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ammoCountStateChanged
+        // TODO add your handling code here:
+        int ammoCountValue =(int) ammoCount.getValue();
+        maincontroller.setValueAt(ammoCountValue, 1, 3);
+    }//GEN-LAST:event_ammoCountStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -304,14 +338,13 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ShootBtn;
+    private javax.swing.JSpinner ammoCount;
     private javax.swing.JLabel areaStatusJLebel;
+    private javax.swing.JSlider fuelCounter;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JButton missileOperationBtn;
     private javax.swing.JToggleButton positionBtn;
@@ -319,5 +352,6 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JButton rotateShootingBtn;
     private javax.swing.JTextField sendMessagetomain;
     private javax.swing.JButton sendMessagetomainBtn;
+    private javax.swing.JSpinner soldierCount;
     // End of variables declaration//GEN-END:variables
 }

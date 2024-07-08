@@ -14,6 +14,9 @@ import javax.swing.event.ChangeListener;
 public class Maincontroller extends javax.swing.JFrame {
     private DefenceObservable defenceObservable;
     String typeMessage;
+    Helicopter helicopter;
+    Tank tank;
+    SubMarine submarine;
     /**
      * Creates new form Maincontroller
      */
@@ -33,7 +36,9 @@ public class Maincontroller extends javax.swing.JFrame {
         msgJTextArea.append(Message+"\n");
         
     }
-
+    
+    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,13 +50,13 @@ public class Maincontroller extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        collectionInformation = new javax.swing.JTable();
         operationJSlider = new javax.swing.JSlider();
         sendJTextField = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        helicopterPin = new javax.swing.JRadioButton();
+        tankPin = new javax.swing.JRadioButton();
+        submarinepin = new javax.swing.JRadioButton();
+        sendPrivate = new javax.swing.JButton();
         sendAllBtn = new javax.swing.JButton();
         areaNotClearedBtn = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -63,9 +68,9 @@ public class Maincontroller extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Collection Information");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        collectionInformation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Helicopter", null, null, null},
+                {"Helicopter", "", null, null},
                 {"Tank", null, null, null},
                 {"Submarine", null, null, null},
                 {null, null, null, null},
@@ -75,9 +80,18 @@ public class Maincontroller extends javax.swing.JFrame {
                 "Super Defence", "Soldier Count", "Fuel amount", "Ammo Amount"
             }
         ));
-        jTable1.setShowGrid(true);
-        jTable1.setSurrendersFocusOnKeystroke(true);
-        jScrollPane1.setViewportView(jTable1);
+        collectionInformation.setShowGrid(true);
+        collectionInformation.setSurrendersFocusOnKeystroke(true);
+        collectionInformation.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                collectionInformationAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(collectionInformation);
 
         operationJSlider.setMajorTickSpacing(10);
         operationJSlider.setPaintLabels(true);
@@ -95,31 +109,31 @@ public class Maincontroller extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Helicopter");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        helicopterPin.setText("Helicopter");
+        helicopterPin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                helicopterPinActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Tank");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        tankPin.setText("Tank");
+        tankPin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                tankPinActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("Submarine");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        submarinepin.setText("Submarine");
+        submarinepin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                submarinepinActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Send Private");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendPrivate.setText("Send Private");
+        sendPrivate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sendPrivateActionPerformed(evt);
             }
         });
 
@@ -162,13 +176,13 @@ public class Maincontroller extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(helicopterPin)
                                         .addGap(1, 1, 1)
-                                        .addComponent(jRadioButton2)
+                                        .addComponent(tankPin)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton3)
+                                        .addComponent(submarinepin)
                                         .addGap(7, 7, 7)
-                                        .addComponent(jButton1))
+                                        .addComponent(sendPrivate))
                                     .addComponent(sendAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))))
@@ -193,10 +207,10 @@ public class Maincontroller extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jButton1))
+                            .addComponent(helicopterPin)
+                            .addComponent(submarinepin, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tankPin)
+                            .addComponent(sendPrivate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sendAllBtn))
                     .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,21 +222,28 @@ public class Maincontroller extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void helicopterPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helicopterPinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_helicopterPinActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void tankPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tankPinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_tankPinActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void submarinepinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submarinepinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_submarinepinActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sendPrivateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPrivateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        typeMessage =sendJTextField.getText();
+        if(helicopterPin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,helicopter);
+        if(tankPin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,tank);
+        if(submarinepin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,submarine);
+        
+        
+        sendJTextField.setText("");
+    }//GEN-LAST:event_sendPrivateActionPerformed
 
     private void operationJSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_operationJSliderStateChanged
         // TODO add your handling code here:
@@ -255,6 +276,15 @@ public class Maincontroller extends javax.swing.JFrame {
         defenceObservable.areaStatus(areaStatus);
     }//GEN-LAST:event_areaNotClearedBtnActionPerformed
 
+    private void collectionInformationAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_collectionInformationAncestorAdded
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_collectionInformationAncestorAdded
+  public void setValueAt(int value, int row, int col) {
+        
+        collectionInformation.setValueAt(value, row, col);
+    }
+  
     /**
      * @param args the command line arguments
      */
@@ -292,17 +322,17 @@ public class Maincontroller extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton areaNotClearedBtn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable collectionInformation;
+    private javax.swing.JRadioButton helicopterPin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea msgJTextArea;
     private javax.swing.JSlider operationJSlider;
     private javax.swing.JButton sendAllBtn;
     private javax.swing.JTextField sendJTextField;
+    private javax.swing.JButton sendPrivate;
+    private javax.swing.JRadioButton submarinepin;
+    private javax.swing.JRadioButton tankPin;
     // End of variables declaration//GEN-END:variables
 }
