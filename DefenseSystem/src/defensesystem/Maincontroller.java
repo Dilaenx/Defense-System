@@ -24,9 +24,14 @@ public class Maincontroller extends javax.swing.JFrame {
        this.defenceObservable=defenceObservable;
        
        
-       defenceObservable.addSuperDefence(new Helicopter());
-       defenceObservable.addSuperDefence(new Tank());
-       defenceObservable.addSuperDefence(new SubMarine());
+       defenceObservable.addSuperDefence(this ,new Helicopter());
+       defenceObservable.addSuperDefence(this ,new Tank());
+       defenceObservable.addSuperDefence(this ,new SubMarine());
+    }
+    
+    public void sendMsgToMain(String Message){
+        msgJTextArea.append(Message+"\n");
+        
     }
 
     /**
@@ -50,7 +55,7 @@ public class Maincontroller extends javax.swing.JFrame {
         sendAllBtn = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        msgJTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Controller");
@@ -128,9 +133,9 @@ public class Maincontroller extends javax.swing.JFrame {
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jToggleButton2.setText("Area Not Cleared");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        msgJTextArea.setColumns(20);
+        msgJTextArea.setRows(5);
+        jScrollPane2.setViewportView(msgJTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -283,8 +288,8 @@ public class Maincontroller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextArea msgJTextArea;
     private javax.swing.JSlider operationJSlider;
     private javax.swing.JButton sendAllBtn;
     private javax.swing.JTextField sendJTextField;

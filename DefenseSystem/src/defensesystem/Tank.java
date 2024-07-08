@@ -11,6 +11,8 @@ package defensesystem;
 public class Tank extends javax.swing.JFrame implements SuperDefence{
     boolean position;
     int operation;
+    int task;
+    Maincontroller maincontroller;
     /**
      * Creates new form Tank
      */
@@ -23,6 +25,11 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         rotateShootingBtn.setEnabled(false);
         
     }
+    public void addMainController(Maincontroller maincontroller){
+    this.maincontroller=maincontroller;
+    
+    }
+    
     public void update(int operation){
         this.operation=operation;
         if(position){
@@ -38,7 +45,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         }
     }
     public void mainMessageJTextArea(String typeMessage){
-        mainMessageJTextArea.append(typeMessage+"\n");
+        mainMessageJTextArea.append("task "+(++task)+":- "+typeMessage+"\n");
         
     }
 
@@ -60,8 +67,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         rotateShootingBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainMessageJTextArea = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        sendMessagetomain = new javax.swing.JTextField();
+        sendMessagetomainBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         positionBtn = new javax.swing.JToggleButton();
@@ -120,9 +127,19 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.setRows(5);
         jScrollPane1.setViewportView(mainMessageJTextArea);
 
-        jTextField1.setText("Type Message...");
+        sendMessagetomain.setText("Type Message...");
+        sendMessagetomain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendMessagetomainActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Send");
+        sendMessagetomainBtn.setText("Send");
+        sendMessagetomainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendMessagetomainBtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Soldier Count");
 
@@ -144,9 +161,9 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1)
+                        .addComponent(sendMessagetomain)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sendMessagetomainBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ShootBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,8 +220,8 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(sendMessagetomainBtn)
+                            .addComponent(sendMessagetomain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -232,6 +249,18 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
         position=positionBtn.getModel().isSelected();
         this.update(operation);
     }//GEN-LAST:event_positionBtnActionPerformed
+
+    private void sendMessagetomainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagetomainBtnActionPerformed
+        // TODO add your handling code here:
+        String Message ="War Tank :"+sendMessagetomain.getText();
+       maincontroller.sendMsgToMain(Message);
+      sendMessagetomain.setText("");
+       
+    }//GEN-LAST:event_sendMessagetomainBtnActionPerformed
+
+    private void sendMessagetomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagetomainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sendMessagetomainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,7 +299,6 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ShootBtn;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -279,11 +307,12 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JButton missileOperationBtn;
     private javax.swing.JToggleButton positionBtn;
     private javax.swing.JButton redarOperationbtn;
     private javax.swing.JButton rotateShootingBtn;
+    private javax.swing.JTextField sendMessagetomain;
+    private javax.swing.JButton sendMessagetomainBtn;
     // End of variables declaration//GEN-END:variables
 }

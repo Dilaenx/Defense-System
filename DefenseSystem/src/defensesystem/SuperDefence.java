@@ -11,6 +11,7 @@ package defensesystem;
 interface SuperDefence {
     public void update(int operation);
     public void mainMessageJTextArea(String typeMessage);
+     public void addMainController(Maincontroller maincontroller);
     //public void recevedMessage(String typeMessage);
     //public void sendMessage(String messsage);
 }

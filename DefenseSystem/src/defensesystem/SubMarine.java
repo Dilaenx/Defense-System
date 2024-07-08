@@ -11,6 +11,8 @@ package defensesystem;
 public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     boolean position;
     int operation;
+    int task;
+    Maincontroller maincontroller;
     /**
      * Creates new form SubMarine
      */
@@ -22,6 +24,12 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         tomahawkMissileBtn.setEnabled(false);
         trident2MissileBtn.setEnabled(false);
     }
+    
+    public void addMainController(Maincontroller maincontroller){
+    this.maincontroller=maincontroller;
+    
+    }
+    
     public void update(int operation){
         this.operation=operation;
         if(position){
@@ -37,7 +45,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         }
     }
     public void mainMessageJTextArea(String typeMessage){
-        mainMessageJTextArea.append(typeMessage+"\n");
+        mainMessageJTextArea.append("task "+(++task)+":- "+typeMessage+"\n");
         
     }
 
@@ -58,8 +66,8 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         jSpinner2 = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainMessageJTextArea = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        sendMessagetomain = new javax.swing.JTextField();
+        sendMessagetomainBtn = new javax.swing.JButton();
         positionBtn = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
         shootBtn = new javax.swing.JButton();
@@ -87,9 +95,14 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         mainMessageJTextArea.setRows(5);
         jScrollPane1.setViewportView(mainMessageJTextArea);
 
-        jTextField1.setText("Type Message...");
+        sendMessagetomain.setText("Type Message...");
 
-        jButton5.setText("Send");
+        sendMessagetomainBtn.setText("Send");
+        sendMessagetomainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendMessagetomainBtnActionPerformed(evt);
+            }
+        });
 
         positionBtn.setText("Position");
         positionBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -161,9 +174,9 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sendMessagetomain, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5)))
+                                .addComponent(sendMessagetomainBtn)))
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,8 +227,8 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(sendMessagetomain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendMessagetomainBtn))
                 .addGap(22, 22, 22))
         );
 
@@ -227,6 +240,15 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
         position=positionBtn.getModel().isSelected();
         this.update(operation);
     }//GEN-LAST:event_positionBtnActionPerformed
+
+    private void sendMessagetomainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagetomainBtnActionPerformed
+        // TODO add your handling code here:
+        String Message ="Submarine : "+sendMessagetomain.getText();
+       maincontroller.sendMsgToMain(Message);
+      sendMessagetomain.setText("");
+       
+     
+    }//GEN-LAST:event_sendMessagetomainBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,7 +286,6 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,9 +296,10 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     private javax.swing.JSlider jSlider2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea mainMessageJTextArea;
     private javax.swing.JToggleButton positionBtn;
+    private javax.swing.JTextField sendMessagetomain;
+    private javax.swing.JButton sendMessagetomainBtn;
     private javax.swing.JButton shootBtn;
     private javax.swing.JButton sonarOperationBtn;
     private javax.swing.JButton tomahawkMissileBtn;

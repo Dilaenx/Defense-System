@@ -12,11 +12,15 @@ import java.util.ArrayList;
  */
 public class DefenceObservable {
     private int operation;
+    Maincontroller maincontroller;
     
     private ArrayList <SuperDefence>defenceList= new ArrayList<>();
     
-    public void addSuperDefence(SuperDefence superDefence){
+    public void addSuperDefence(Maincontroller maincontroller ,SuperDefence superDefence){
         defenceList.add(superDefence);
+       // this.maincontroller=maincontroller;
+        superDefence.addMainController(maincontroller);
+        
     }
     
     public void setOperation(int operation){
@@ -39,6 +43,10 @@ public class DefenceObservable {
           ob.mainMessageJTextArea(typeMessage);
             
         }
+   }
+   
+   public void sendMsgToMain(String message){
+       System.out.println("");
    }
   
     
