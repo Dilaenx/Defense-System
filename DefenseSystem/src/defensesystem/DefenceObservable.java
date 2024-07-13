@@ -18,6 +18,7 @@ public class DefenceObservable {
     
     public void addSuperDefence(Maincontroller maincontroller ,SuperDefence superDefence){
         defenceList.add(superDefence);
+        
        // this.maincontroller=maincontroller;
         superDefence.addMainController(maincontroller);
         
@@ -59,7 +60,7 @@ public class DefenceObservable {
    
    public void sendMessageFromMain(String typeMessage,Helicopter helicopter){
        for(SuperDefence ob : defenceList){
-          if(ob instanceof Helicopter)ob.mainMessageJTextArea(typeMessage);
+          if(ob.equals(helicopter))ob.mainMessageJTextArea(typeMessage);
             
         }
    }
@@ -73,6 +74,7 @@ public class DefenceObservable {
    
    public void sendMessageFromMain(String typeMessage,SubMarine helicopter){
        for(SuperDefence ob : defenceList){
+           
           if(ob instanceof SubMarine)ob.mainMessageJTextArea(typeMessage);
             
         }

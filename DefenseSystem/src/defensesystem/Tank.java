@@ -18,7 +18,7 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
      */
     public Tank() {
         initComponents();
-        this.setVisible(true);
+      
         ShootBtn.setEnabled(false);
         missileOperationBtn.setEnabled(false);
         redarOperationbtn.setEnabled(false);
@@ -38,10 +38,10 @@ public class Tank extends javax.swing.JFrame implements SuperDefence{
     public void update(int operation){
         this.operation=operation;
         if(position){
-        if(operation>15){ShootBtn.setEnabled(true);}else{ShootBtn.setEnabled(false);}
-        if(operation>20){missileOperationBtn.setEnabled(true);}else{missileOperationBtn.setEnabled(false);}
-        if(operation>50){redarOperationbtn.setEnabled(true);}else{redarOperationbtn.setEnabled(false);}
-        if(operation>75){rotateShootingBtn.setEnabled(true);}else{rotateShootingBtn.setEnabled(false);}
+        if(operation>25){ShootBtn.setEnabled(true);}else{ShootBtn.setEnabled(false);}
+        if(operation>50){missileOperationBtn.setEnabled(true);}else{missileOperationBtn.setEnabled(false);}
+        if(operation>75){redarOperationbtn.setEnabled(true);}else{redarOperationbtn.setEnabled(false);}
+        if(operation==100){rotateShootingBtn.setEnabled(true);}else{rotateShootingBtn.setEnabled(false);}
         }else{
         ShootBtn.setEnabled(false);
         missileOperationBtn.setEnabled(false);

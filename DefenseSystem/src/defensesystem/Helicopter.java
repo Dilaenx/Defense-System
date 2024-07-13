@@ -22,7 +22,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         
         initComponents();
      
-        this.setVisible(true);
+       
         shootBtn.setEnabled(false);
         missileOperationBtn.setEnabled(false);
         laserOperationbtn.setEnabled(false);

@@ -18,7 +18,7 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
      */
     public SubMarine() {
         initComponents();
-        this.setVisible(true);
+        
         shootBtn.setEnabled(false);
         sonarOperationBtn.setEnabled(false);
         tomahawkMissileBtn.setEnabled(false);
@@ -33,10 +33,10 @@ public class SubMarine extends javax.swing.JFrame implements SuperDefence{
     public void update(int operation){
         this.operation=operation;
         if(position){
-        if(operation>15){shootBtn.setEnabled(true);}else{shootBtn.setEnabled(false);}
-        if(operation>20){sonarOperationBtn.setEnabled(true);}else{sonarOperationBtn.setEnabled(false);}
-        if(operation>50){tomahawkMissileBtn.setEnabled(true);}else{tomahawkMissileBtn.setEnabled(false);}
-        if(operation>75){trident2MissileBtn.setEnabled(true);}else{trident2MissileBtn.setEnabled(false);}
+        if(operation>25){shootBtn.setEnabled(true);}else{shootBtn.setEnabled(false);}
+        if(operation>50){sonarOperationBtn.setEnabled(true);}else{sonarOperationBtn.setEnabled(false);}
+        if(operation>75){tomahawkMissileBtn.setEnabled(true);}else{tomahawkMissileBtn.setEnabled(false);}
+        if(operation==100){trident2MissileBtn.setEnabled(true);}else{trident2MissileBtn.setEnabled(false);}
         }else{
         shootBtn.setEnabled(false);
         sonarOperationBtn.setEnabled(false);

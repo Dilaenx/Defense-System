@@ -26,10 +26,15 @@ public class Maincontroller extends javax.swing.JFrame {
        DefenceObservable defenceObservable = new DefenceObservable();
        this.defenceObservable=defenceObservable;
        
+       Helicopter helicopter = new Helicopter();
+       SubMarine submarine=new SubMarine();
+       Tank tank =new Tank();
        
-       defenceObservable.addSuperDefence(this ,new Helicopter());
-       defenceObservable.addSuperDefence(this ,new Tank());
-       defenceObservable.addSuperDefence(this ,new SubMarine());
+       this.helicopter=helicopter;
+       this.submarine=submarine;
+       this.tank=tank;
+       
+       
     }
     
     public void sendMsgToMain(String Message){
@@ -61,6 +66,10 @@ public class Maincontroller extends javax.swing.JFrame {
         areaNotClearedBtn = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         msgJTextArea = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        helicopterBtn = new javax.swing.JToggleButton();
+        warTankBtn = new javax.swing.JToggleButton();
+        submarineBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Controller");
@@ -145,7 +154,7 @@ public class Maincontroller extends javax.swing.JFrame {
         });
 
         areaNotClearedBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        areaNotClearedBtn.setText("Area Not Cleared");
+        areaNotClearedBtn.setText("Area Cleared");
         areaNotClearedBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 areaNotClearedBtnActionPerformed(evt);
@@ -156,21 +165,45 @@ public class Maincontroller extends javax.swing.JFrame {
         msgJTextArea.setRows(5);
         jScrollPane2.setViewportView(msgJTextArea);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel2.setText("Super Defence");
+
+        helicopterBtn.setText("Helicopter");
+        helicopterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helicopterBtnActionPerformed(evt);
+            }
+        });
+
+        warTankBtn.setText("War Tank");
+        warTankBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warTankBtnActionPerformed(evt);
+            }
+        });
+
+        submarineBtn.setText("Submarine");
+        submarineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submarineBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(operationJSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(operationJSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(282, 282, 282)
+                                .addComponent(areaNotClearedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,19 +216,37 @@ public class Maincontroller extends javax.swing.JFrame {
                                         .addComponent(submarinepin)
                                         .addGap(7, 7, 7)
                                         .addComponent(sendPrivate))
-                                    .addComponent(sendAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2))))
+                                    .addComponent(sendAllBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(areaNotClearedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(268, 268, 268))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(helicopterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warTankBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(submarineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(helicopterBtn)
+                    .addComponent(warTankBtn)
+                    .addComponent(submarineBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,9 +265,9 @@ public class Maincontroller extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sendAllBtn))
                     .addComponent(sendJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(areaNotClearedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -237,7 +288,7 @@ public class Maincontroller extends javax.swing.JFrame {
     private void sendPrivateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPrivateActionPerformed
         // TODO add your handling code here:
         typeMessage =sendJTextField.getText();
-        if(helicopterPin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,helicopter);
+        if(helicopterPin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,this.helicopter);
         if(tankPin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,tank);
         if(submarinepin.isSelected())defenceObservable.sendMessageFromMain(typeMessage,submarine);
         
@@ -272,7 +323,7 @@ public class Maincontroller extends javax.swing.JFrame {
 
     private void areaNotClearedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaNotClearedBtnActionPerformed
         // TODO add your handling code here:
-        boolean areaStatus =areaNotClearedBtn.getModel().isSelected();
+        boolean areaStatus =!areaNotClearedBtn.getModel().isSelected();
         defenceObservable.areaStatus(areaStatus);
     }//GEN-LAST:event_areaNotClearedBtnActionPerformed
 
@@ -280,6 +331,45 @@ public class Maincontroller extends javax.swing.JFrame {
         // TODO add your handling code here:
       
     }//GEN-LAST:event_collectionInformationAncestorAdded
+
+    private void helicopterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helicopterBtnActionPerformed
+        // TODO add your handling code here:
+        boolean select =helicopterBtn.isSelected();
+        if(select){
+            defenceObservable.addSuperDefence(this ,helicopter);
+            helicopter.setVisible(true);
+        }
+        if(!select){
+            
+            helicopter.setVisible(false);
+        }
+    }//GEN-LAST:event_helicopterBtnActionPerformed
+
+    private void warTankBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warTankBtnActionPerformed
+        // TODO add your handling code here:
+         boolean select =warTankBtn.isSelected();
+        if(select){
+            defenceObservable.addSuperDefence(this ,tank);
+            tank.setVisible(true);
+        }
+        if(!select){
+            
+            tank.setVisible(false);
+        }
+    }//GEN-LAST:event_warTankBtnActionPerformed
+
+    private void submarineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submarineBtnActionPerformed
+    boolean select =submarineBtn.isSelected();
+        if(select){
+            defenceObservable.addSuperDefence(this ,submarine);
+            submarine.setVisible(true);
+        }
+        if(!select){
+            
+            submarine.setVisible(false);
+        }     
+// TODO add your handling code here:
+    }//GEN-LAST:event_submarineBtnActionPerformed
   public void setValueAt(int value, int row, int col) {
         
         collectionInformation.setValueAt(value, row, col);
@@ -323,8 +413,10 @@ public class Maincontroller extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton areaNotClearedBtn;
     private javax.swing.JTable collectionInformation;
+    private javax.swing.JToggleButton helicopterBtn;
     private javax.swing.JRadioButton helicopterPin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea msgJTextArea;
@@ -332,7 +424,9 @@ public class Maincontroller extends javax.swing.JFrame {
     private javax.swing.JButton sendAllBtn;
     private javax.swing.JTextField sendJTextField;
     private javax.swing.JButton sendPrivate;
+    private javax.swing.JToggleButton submarineBtn;
     private javax.swing.JRadioButton submarinepin;
     private javax.swing.JRadioButton tankPin;
+    private javax.swing.JToggleButton warTankBtn;
     // End of variables declaration//GEN-END:variables
 }
