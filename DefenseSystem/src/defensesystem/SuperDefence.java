@@ -13,6 +13,7 @@ interface SuperDefence {
     public void mainMessageJTextArea(String typeMessage);
      public void addMainController(Maincontroller maincontroller);
      public void newAreaStatus(String newAreaStatus);
+     public boolean isVisible();
     //public void recevedMessage(String typeMessage);
     //public void sendMessage(String messsage);
 }

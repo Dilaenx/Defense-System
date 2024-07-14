@@ -22,7 +22,7 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
         
         initComponents();
      
-       
+ 
         shootBtn.setEnabled(false);
         missileOperationBtn.setEnabled(false);
         laserOperationbtn.setEnabled(false);
@@ -53,7 +53,6 @@ public class Helicopter extends javax.swing.JFrame implements SuperDefence{
     public void newAreaStatus(String newAreaStatus){
         areaStatusJLebel.setText(newAreaStatus);
     }
-    
     
 
     /**

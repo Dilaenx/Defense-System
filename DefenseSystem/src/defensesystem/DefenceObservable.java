@@ -34,14 +34,14 @@ public class DefenceObservable {
     }
     public void notifyObject(){
         for(SuperDefence ob : defenceList){
-            ob.update(operation);
+           ob.update(operation);
             
         }
     }
     
    public void sendMessageFromMain(String typeMessage){
         for(SuperDefence ob : defenceList){
-          ob.mainMessageJTextArea(typeMessage);
+            if(ob.isVisible() == true)ob.mainMessageJTextArea(typeMessage);
             
         }
    }
@@ -60,7 +60,7 @@ public class DefenceObservable {
    
    public void sendMessageFromMain(String typeMessage,Helicopter helicopter){
        for(SuperDefence ob : defenceList){
-          if(ob.equals(helicopter))ob.mainMessageJTextArea(typeMessage);
+          if(ob.equals(helicopter)&ob.isVisible() == true)ob.mainMessageJTextArea(typeMessage);
             
         }
    }
